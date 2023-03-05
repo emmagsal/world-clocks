@@ -14,6 +14,15 @@ let parisTimeElement = parisElement.querySelector(".time");
 parisDateElement.innerHTML = moment().tz("Europe/Paris").format("MMMM D YYYY");
 parisTimeElement.innerHTML = moment().tz("Europe/Paris").format("hh:mm:ss [<small>]A[</small>]");
 }
+
+function perth() {
+let perthElement = document.querySelector("#perth");
+let perthDateElement = perthElement.querySelector(".date");
+let perthTimeElement = perthElement.querySelector(".time");
+perthDateElement.innerHTML = moment().tz("Australia/Perth").format("MMMM D YYYY");
+perthTimeElement.innerHTML = moment().tz("Australia/Perth").format("hh:mm:ss [<small>]A[</small>]");
+}
+
 function updateCity(event) {
     let cityTimeZone = event.target.value;
     if (cityTimeZone === "current") {
@@ -33,13 +42,17 @@ function updateCity(event) {
             </div>
          </div>
          <div class="time">${cityTime}</div>
-    </div>`
+    </div>
+    <a href="/">Back to Homepage</a>`
 
 }
+
 paris();
 la();
+perth();
 setInterval(paris, 1000);
 setInterval(la, 1000);
+setInterval(perth, 1000);
 
 let citiesSelectElement = document.querySelector("#city");
 citiesSelectElement.addEventListener("change", updateCity);
